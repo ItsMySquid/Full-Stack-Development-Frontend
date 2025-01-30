@@ -3,7 +3,7 @@ import {Link} from "react-router";
 function Block({ block, blockDeleted }) {
     const deleteBlock = async () => {
         try {
-            const response = await fetch(`http://145.24.223.76:8001/blocks/${id}`, {
+            const result = await fetch(`http://145.24.223.76:8001/blocks/${block.id}`, {
                 headers: {
                     'Accept': 'application/json'
                 },

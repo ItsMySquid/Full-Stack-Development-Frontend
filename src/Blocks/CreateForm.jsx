@@ -7,7 +7,7 @@ function BlockCreateForm() {
     const [formData, setFormData] = useState({
         name: "",
         description: "",
-        category: "Building", // Default geselecteerde waarde
+        category: "Building",
         stackSize: 1,
         gravity: false,
     });
@@ -17,21 +17,23 @@ function BlockCreateForm() {
 
         setFormData((prevFormData) => ({
             ...prevFormData,
-            [name]:
-                name === "stackSize"
-                    ? Math.min(Math.max(1, parseInt(value, 10)), 64) // Beperkt stackSize tussen 1 en 64
-                    : type === "checkbox"
-                        ? checked
+            [name]: name === "stackSize"
+                ? Math.min(Math.max(1, parseInt(value, 10)), 64) // Houdt stackSize tussen 1 en 64
+                : type === "checkbox"
+                    ? checked
+                    : name === "gravity"
+                        ? value === "true" // Zet "true"/"false" om naar een boolean
                         : value,
         }));
     };
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("Form submitted:", formData);
 
         try {
-            const response = await fetch("http://145.24.223.83:8001/blocks", {
+            const response = await fetch("http://145.24.223.76:8001/blocks", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -41,13 +43,13 @@ function BlockCreateForm() {
             });
 
             if (!response.ok) {
-                new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
             console.log("Response from server:", data);
             if (response.status === 201) {
-                navigate(`/blocks/${data.id}`);
+                navigate(`/${data.id}`);
             }
         } catch (error) {
             console.error("An error occurred:", error);
