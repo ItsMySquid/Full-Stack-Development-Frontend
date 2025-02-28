@@ -5,7 +5,7 @@ function List() {
     const [blocks, setBlocks] = useState(null);
         async function fetchBlocks() {
             try {
-                const response = await fetch('http://145.24.223.76:8001/blocks/', {
+                const response = await fetch('http://localhost:8001/blocks/', {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json'

@@ -33,7 +33,7 @@ function BlockCreateForm() {
         console.log("Form submitted:", formData);
 
         try {
-            const response = await fetch("http://145.24.223.76:8001/blocks", {
+            const response = await fetch("http://localhost:8001/blocks", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",

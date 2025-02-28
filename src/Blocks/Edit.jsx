@@ -9,7 +9,7 @@ function Edit() {
     // Haal de bestaande blokgegevens op
     async function fetchBlock() {
         try {
-            const response = await fetch(`http://145.24.223.76:8001/blocks/${params.id}`, {
+            const response = await fetch(`http://localhost:8001/blocks/${params.id}`, {
                 headers: {
                     'Accept': 'application/json'
                 }
@@ -61,7 +61,7 @@ function Edit() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(`http://145.24.223.76:8001/blocks/${params.id}`, {
+            const response = await fetch(`http://localhost:8001/blocks/${params.id}`, {
                 method: "PUT",
                 headers: {
                     Accept: "application/json",

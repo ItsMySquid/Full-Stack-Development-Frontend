@@ -7,7 +7,7 @@ function Detail() {
     const [loading, setLoading] = useState(true);
     async function fetchBlock() {
         try {
-            const response = await fetch(`http://145.24.223.76:8001/blocks/${id}`, {
+            const response = await fetch(`http://localhost:8001/blocks/${id}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json'
